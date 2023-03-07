@@ -78,8 +78,8 @@ const App = () => {
 
 | Property | Description | Type | Default | Required |
 | --- | --- | --- | --- | --- |
-| formStates | The initial state | IFormItem[] |  |  |
-| setFormStates | Dispatch actions | Dispatch<SetStateAction<IFormItem[]>> |  |  |
+| formStates | The initial state | IFormItem[] |  | ✅ |
+| setFormStates | Dispatch actions | Dispatch<SetStateAction<IFormItem[]>> |  | ✅ |
 | indent | Indent size in pixels of tree data | number | 16 |  |
 | spans | The span of grid between each element for every line | number[] | [8,5,8,3] |  |
 
