@@ -1,0 +1,13 @@
+{
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "target": "ES2019",
+    "strict": true,
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
+  },
+  "exclude": ["lib", "src/**/*.stories.tsx", "src/**/*.test.tsx"]
+}
