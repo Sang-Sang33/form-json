@@ -12,7 +12,7 @@ npm install json-form
 yarn add json-form
 ```
 
-![image](https://github.com/Sang-Sang33/Json-Form/blob/main/assets/review.gif)
+![image](https://github.com/Sang-Sang33/Json-Form/blob/main/assets/review.png)
 
 ## Usage
 
