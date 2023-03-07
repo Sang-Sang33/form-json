@@ -1,7 +1,7 @@
 import { useFormStates } from '../../../../test/test-utils';
 import { renderHook } from '@testing-library/react';
 import useFormActions from '../../common/hooks/useFormActions';
-import {screen, render, fireEvent} from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react';
 import ValueInputByType from "./index";
 
 describe('useJsonState', () => {
