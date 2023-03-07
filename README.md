@@ -1,6 +1,6 @@
 <h1 align="center">Json Form</h1>
 
-<p align="center">Generate Json data with the controlled  based on "antd"、“lodash-es”、"immer"</p>
+<p align="center">Generate Json data with the controlled form based on "antd"、“lodash-es”、"immer"</p>
 
 ## Install
 
@@ -78,9 +78,9 @@ const App = () => {
 
 | Property | Description | Type | Default | Required |
 | --- | --- | --- | --- | --- |
-| formStates | The initial state | boolean | IFormItem[] |  |
-| setFormStates | Dispatch actions | boolean | Dispatch<SetStateAction<IFormItem[]>> |  |
-| indent | indent | Indent size in pixels of tree data | 16 |  |
+| formStates | The initial state | IFormItem[] |  |  |
+| setFormStates | Dispatch actions | Dispatch<SetStateAction<IFormItem[]>> |  |  |
+| indent | Indent size in pixels of tree data | number | 16 |  |
 | spans | The span of grid between each element for every line | number[] | [8,5,8,3] |  |
 
 ### IFormItem
