@@ -4,7 +4,7 @@ import { last, uniqueId } from 'lodash-es';
 import { ETypes, isComplexTypeFn } from '../constants';
 import {Dispatch, SetStateAction} from "react";
 
-function generateNewState(): IFormItem {
+export function generateNewState(): IFormItem {
   return {
     name: '',
     value: '',

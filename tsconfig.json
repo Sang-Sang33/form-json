@@ -5,9 +5,14 @@
     "strict": true,
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "sourceMap": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": ["vitest/globals"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "exclude": ["lib", "src/**/*.stories.tsx", "src/**/*.test.tsx"]
 }
