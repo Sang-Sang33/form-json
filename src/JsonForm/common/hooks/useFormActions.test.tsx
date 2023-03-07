@@ -1,45 +1,9 @@
-import { act, renderHook } from '@testing-library/react'
-import useFormActions from './useFormActions'
-import {uniqueId} from "lodash-es";
-import {ETypes} from "../constants";
-import {IFormItem} from "../constants/type";
-import {useState} from "react";
-import useJsonState from "./useJsonStates";
+import { act, renderHook } from '@testing-library/react';
+import useFormActions from './useFormActions';
+import { ETypes } from '../constants';
+import { useFormStates } from '../../../../test/test-utils';
 
-function useFormStates() {
-  const [formStates, setFormStates] = useState<IFormItem[]>([
-    {
-      name: 'mikasa',
-      value: '',
-      id: uniqueId(),
-      type: ETypes.Object,
-      children: [
-        {
-          name: 'hobby',
-          value: 'kill alen',
-          id: uniqueId(),
-          type: ETypes.String,
-          children: [],
-        },
-      ],
-    },
-    {
-      name: 'alen',
-      value: 12,
-      id: uniqueId(),
-      type: ETypes.Number,
-      children: [],
-    },
-  ]);
-
-  return {
-    formStates,
-    setFormStates
-  }
-}
-
-
-describe('useJsonState', () => {
+describe('useFormActions', () => {
   it('useFormActions should provide four function to change formStates', () => {
     const { result: { current: { formStates, setFormStates } } } = renderHook(() => useFormStates())
     const { result: { current: {
@@ -61,7 +25,7 @@ describe('useJsonState', () => {
     act(() => {
       actionsResult.current.onAddSibling([0])
     })
-    expect(stateResult.current.formStates.length).toBe(3)
+    expect(stateResult.current.formStates.length).toBe(4)
   })
 
   it('The onAddSibling should add sibling to formStates', () => {
@@ -79,7 +43,7 @@ describe('useJsonState', () => {
     act(() => {
       actionsResult.current.onDeleteFormLine([0])
     })
-    expect(stateResult.current.formStates.length).toEqual(1)
+    expect(stateResult.current.formStates.length).toEqual(2)
   })
 
   it('The onDeleteFormLine should delete the children item by path', () => {
@@ -91,7 +55,7 @@ describe('useJsonState', () => {
     expect(stateResult.current.formStates[0].children.length).toEqual(0)
   })
 
-  it('The onAddChildren should add the children item by path', () => {
+  it('1. The onAddChildren should add the children item by path', () => {
     const { result: stateResult } = renderHook(() => useFormStates())
     const { result: actionsResult } = renderHook(() => useFormActions(stateResult.current.setFormStates))
     act(() => {
@@ -100,7 +64,7 @@ describe('useJsonState', () => {
     expect(stateResult.current.formStates[0].children.length).toEqual(2)
   })
 
-  it('The onAddChildren should add the children item by path', () => {
+  it('2. The onAddChildren should add the children item by path', () => {
     const { result: stateResult } = renderHook(() => useFormStates())
     const { result: actionsResult } = renderHook(() => useFormActions(stateResult.current.setFormStates))
     act(() => {
@@ -109,7 +73,7 @@ describe('useJsonState', () => {
     expect(stateResult.current.formStates[1].type).toEqual(ETypes.String)
   })
 
-  it('The onAddChildren should add the children item by path', () => {
+  it('The onStateChange should change the state value', () => {
     const { result: stateResult } = renderHook(() => useFormStates())
     const { result: actionsResult } = renderHook(() => useFormActions(stateResult.current.setFormStates))
     act(() => {

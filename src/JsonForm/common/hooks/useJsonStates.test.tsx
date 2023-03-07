@@ -1,7 +1,7 @@
-import { act, renderHook } from '@testing-library/react'
-import useJsonState from './useJsonStates'
-import {uniqueId} from "lodash-es";
-import {ETypes} from "../constants";
+import { act, renderHook } from '@testing-library/react';
+import useJsonState from './useJsonStates';
+import { uniqueId } from 'lodash-es';
+import { ETypes } from '../constants';
 
 describe('useJsonState', () => {
   it('should get the truty json state', () => {
@@ -23,18 +23,14 @@ describe('useJsonState', () => {
                 value: 'kill alen',
                 id: uniqueId(),
                 type: ETypes.String,
-                children: [
-
-                ],
+                children: [],
               },
               {
                 name: 'hobby',
                 value: 'kill human beings',
                 id: uniqueId(),
                 type: ETypes.String,
-                children: [
-
-                ],
+                children: [],
               },
             ],
           },
@@ -47,16 +43,16 @@ describe('useJsonState', () => {
         type: ETypes.Number,
         children: [],
       },
-    ]
-    const { result } = renderHook(() => useJsonState(formStates))
+    ];
+    const { result } = renderHook(() => useJsonState(formStates));
     const expectJson = {
       mikasa: {
-        hobby: ["kill alen", "kill human beings"]
+        hobby: ['kill alen', 'kill human beings'],
       },
-      alen: 12
-    }
-    expect(result.current).toEqual(expectJson)
-  })
+      alen: 12,
+    };
+    expect(result.current).toEqual(expectJson);
+  });
   it('when the  type is not complex, the "children" field should not be the value of key', () => {
     const formStates = [
       {
@@ -81,12 +77,12 @@ describe('useJsonState', () => {
         type: ETypes.Number,
         children: [],
       },
-    ]
-    const { result } = renderHook(() => useJsonState(formStates))
+    ];
+    const { result } = renderHook(() => useJsonState(formStates));
     const expectJson = {
-      mikasa: "haha",
-      alen: 12
-    }
-    expect(result.current).toEqual(expectJson)
-  })
-})
+      mikasa: 'haha',
+      alen: 12,
+    };
+    expect(result.current).toEqual(expectJson);
+  });
+});

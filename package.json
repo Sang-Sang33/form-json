@@ -12,6 +12,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "lint": "eslint --fix --ext .ts --ext .tsx src/",
+    "lint:test": "eslint --fix --ext .ts --ext .tsx test/",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },

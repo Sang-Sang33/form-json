@@ -7,7 +7,6 @@ import babel from "@rollup/plugin-babel";
 import path from "path";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
-// console.log(dts)
 
 const packageJson = require("./package.json");
 const babelOptions = {
@@ -23,11 +22,11 @@ export default [
     input: entry,
     format: "iife",
     output: [
-      // {
-      //   file: packageJson.main,
-      //   format: "cjs",
-      //   sourcemap: true
-      // },
+      {
+        file: packageJson.main,
+        format: "cjs",
+        sourcemap: true
+      },
       {
         file: packageJson.module,
         format: "esm",
@@ -49,7 +48,7 @@ export default [
       postcss({
         modules: true,
       }),
-      // terser(),
+      terser(),
     ],
     external: ["lodash-es", "immer", "antd", "@ant-design/icons"],
   },

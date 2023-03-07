@@ -37,7 +37,6 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
           const newLineState = generateNewState();
           let newDraft = draft;
           for (let i = 0; i < path.length; i++) {
-            console.log(path[i]);
             newDraft = newDraft[path[i]].children;
           }
           newDraft.push(newLineState);
@@ -75,6 +74,9 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
                 newDraft[finalIndex].value = '';
               } else {
                 newDraft[finalIndex].children = [];
+                if(value === ETypes.Boolean) {
+                  newDraft[finalIndex].value = Boolean(newDraft[finalIndex].value)
+                }
               }
             }
           }
