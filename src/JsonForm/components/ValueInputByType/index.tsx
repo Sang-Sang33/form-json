@@ -8,10 +8,10 @@ interface IProps {
   value: string | boolean | number;
   type: string;
   path: number[];
-  onStateChange: OnStateChange;
+  handleStateChange: OnStateChange;
 }
 
-function ValueInputByType({ value, path, type, onStateChange }: IProps) {
+function ValueInputByType({ value, path, type, handleStateChange }: IProps) {
   const VALUE_COMPONENTS = {
     [ETypes.Boolean]: (
         <Select
@@ -19,7 +19,7 @@ function ValueInputByType({ value, path, type, onStateChange }: IProps) {
             style={{ width: '100%' }}
             options={BOOLEAN_OPTIONS}
             onChange={(value) => {
-              onStateChange(path, 'value', value);
+              handleStateChange(path, 'value', value);
             }}
             placeholder={'请选择true或者false'}
         />
@@ -29,7 +29,7 @@ function ValueInputByType({ value, path, type, onStateChange }: IProps) {
             value={value as string}
             placeholder={'请输入值'}
             onChange={(e) => {
-              onStateChange(path, 'value', e.target.value);
+              handleStateChange(path, 'value', e.target.value);
             }}
         />
     ),
@@ -40,7 +40,7 @@ function ValueInputByType({ value, path, type, onStateChange }: IProps) {
             controls={false}
             placeholder={'请输入值'}
             onChange={(value) => {
-              onStateChange(path, 'value', value as number);
+              handleStateChange(path, 'value', value as number);
             }}
         />
     ),

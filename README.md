@@ -12,7 +12,7 @@ npm install json-form
 yarn add json-form
 ```
 
-![image](https://github.com/Sang-Sang33/Json-Form/blob/main/assets/review.gif)
+### [**Json-Form-Storybook**](https://sang-sang33.github.io/?path=/story/example-jsonform--normal)
 
 ## Usage
 
@@ -80,31 +80,16 @@ const App = () => {
 
 | Property | Description | Type | Default | Required |
 | --- | --- | --- | --- | --- |
-| formStates | The initial state | IFormItem[] |  | ✅ |
-| setFormStates | Dispatch actions | Dispatch<SetStateAction<IFormItem[]>> |  | ✅ |
+| formStates | The initial state | [IFormItem[]](#IFormItem) |  | ✅ |
+| setFormStates | Dispatch actions | Dispatch"<"SetStateAction"<"IFormItem[]">"">" |  | ✅ |
 | indent | Indent size in pixels of tree data | number | 16 |  |
 | spans | The span of grid between each element for every line | number[] | [8,5,8,3] |  |
-
-### IFormItem
-
-| Field | Description | Type |
-| --- | --- | --- | 
-| name | The Json field | string | 
-| value | The value to the current key | any | 
-| id | The unique key for each line | string | 
-| type | The type for value | ETypes
-| children | The nested children | IFormItem[]
-
-### ETypes
-```ts
-enum ETypes {
-  String = 'string',
-  Number = 'number',
-  Array = 'array',
-  Object = 'object',
-  Boolean = 'boolean',
-}
-```
+| containerClassName | The container class | string | |  |
+| itemClassName | The class for each line's container | string | |  |
+| onAddChildren | A callback function, can be executed when clicking to the plus children icon | [OnStateCurd](#OnStateCurd) | |  |
+| onAddSibling | A callback function, can be executed when clicking to the plus icon | [OnStateCurd](#OnStateCurd) | |  |
+| onDeleteItem | A callback function, can be executed when clicking to the delete icon | [OnStateCurd](#OnStateCurd) | |  |
+| onStateChange | A callback function, can be executed when the input element's value has been changed | [OnStateChange](#OnStateChange) | |  |
 
 ## Hooks
 
@@ -190,12 +175,64 @@ const App = () => {
 
 ### useFormActions
 ```ts
-type TEditField = Exclude<keyof IFormItem, 'id' | 'children' | 'path'>;
-type useFormActions = (formStates: IFormItem[]) => ({
-  onAddChildren: (path: number[]) => void;
-  onDeleteFormLine: (path: number[]) => void;
-  onAddSibling: (path: number[]) => void;
-  onStateChange: (path: number[], field: TEditField, value: string | number | boolean) => void;;
-})
+type useFormActions = (props: IFormActions) => ReturnFormACtions
 ```
 The CURD actions for the form which has already been add event to the form element, maybe you should use it in other place.
+
+
+## Interface
+
+### IFormItem <a id="IFormItem"></a>
+```ts
+interface IFormItem {
+  name: string;                     // The Json Key
+  value: string | number | boolean; // The value to the current json key
+  id: string;                       // The unique key for each line
+  type: string;                     // ETypes
+  children: IFormItem[];            // The nested children when the type is 'array' or 'object'
+}
+```
+
+### ETypes
+```ts
+enum ETypes {
+  String = 'string',
+  Number = 'number',
+  Array = 'array',
+  Object = 'object',
+  Boolean = 'boolean',
+}
+```
+
+### TEditField
+```ts
+type TEditField = Exclude<keyof IFormItem, 'id' | 'children' | 'path'>;
+```
+
+### IFormActions
+```ts
+interface IFormActions extends ICallbacks {
+  setFormStates: Dispatch<SetStateAction<IFormItem[]>>;
+}
+```
+
+### ICallbacks
+```ts
+interface ICallbacks {
+  onAddChildren?: OnStateCurd;
+  onAddSibling?: OnStateCurd;
+  onDeleteItem?: OnStateCurd;
+  onStateChange?: OnStateChange;
+}
+```
+
+### OnStateCurd <a id="OnStateCurd"></a>
+```ts
+type OnStateCurd = (path: number[]) => void;
+```
+
+### OnStateChange <a id="OnStateChange"></a>
+```ts 
+type OnStateChange = (path: number[], field: TEditField, value: string | number | boolean) => void;
+```
+

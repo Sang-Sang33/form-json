@@ -68,9 +68,7 @@ export function useFormStates() {
   };
 }
 
-type IProps = IJsonFormProps
-
-export const JsonFormStory = (props: IProps) => {
+export const JsonFormStory = (props: IJsonFormProps) => {
   const jsonStates = useJsonStates(props.formStates);
   return <div style={{display: 'flex'}}>
     <div style={{width: '70%'}}>

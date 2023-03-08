@@ -1,18 +1,15 @@
-import FormLine from '../FormLine';
-import { OnStateCurd, OnStateChange, IFormItem } from '../../common/constants/type';
 import React, { useMemo } from 'react';
+import FormLine from '../FormLine';
+import { IFormItem, ReturnFormACtions } from '../../common/constants/type';
 import { ETypes, isComplexTypeFn } from '../../common/constants';
 
-interface IProps {
+interface IProps extends ReturnFormACtions {
   formState: IFormItem;
   path: number[];
   parentType: string;
   indent?: number;
   spans?: number[];
-  onAddSibling: OnStateCurd;
-  onAddChildren: OnStateCurd;
-  onDeleteFormLine: OnStateCurd;
-  onStateChange: OnStateChange;
+  itemClassName?: string;
 }
 
 function RecursiveFormLine({ formState, parentType, path, ...props }: IProps) {

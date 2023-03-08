@@ -1,4 +1,10 @@
-import { IFormItem, OnStateChange, OnStateCurd } from '../constants/type';
+import {
+  IFormItem,
+  OnStateChange,
+  OnStateCurd,
+  ReturnFormACtions,
+  ICallbacks,
+} from '../constants/type';
 import produce from 'immer';
 import { last, uniqueId } from 'lodash-es';
 import { ETypes, isComplexTypeFn } from '../constants';
@@ -14,9 +20,21 @@ export function generateNewState(): IFormItem {
   };
 }
 
-function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
-  const onAddSibling: OnStateCurd = (path) => {
-    onChange(
+interface IFormActions extends ICallbacks {
+  setFormStates: Dispatch<SetStateAction<IFormItem[]>>;
+}
+
+function useFormActions({ 
+  setFormStates, 
+  onAddChildren, 
+  onAddSibling, 
+  onDeleteItem, 
+  onStateChange 
+}: IFormActions): ReturnFormACtions {
+
+  const handleAddSibling: OnStateCurd = (path) => {
+    onAddSibling?.(path);
+    setFormStates(
         produce((draft) => {
           const newLineState = generateNewState();
           let newDraft = draft;
@@ -31,8 +49,9 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
     );
   };
 
-  const onAddChildren: OnStateCurd = (path) => {
-    onChange(
+  const handleAddChildren: OnStateCurd = (path) => {
+    onAddChildren?.(path);
+    setFormStates(
         produce((draft) => {
           const newLineState = generateNewState();
           let newDraft = draft;
@@ -44,8 +63,9 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
     );
   };
 
-  const onDeleteFormLine: OnStateCurd = (path) => {
-    onChange(
+  const handleDeleteItem: OnStateCurd = (path) => {
+    onDeleteItem?.(path)
+    setFormStates(
         produce((draft) => {
           let newDraft = draft;
           const finalIndex = last(path);
@@ -59,8 +79,9 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
     );
   };
 
-  const onStateChange: OnStateChange = (path, field, value) => {
-    onChange(
+  const handleStateChange: OnStateChange = (path, field, value) => {
+    onStateChange?.(path, field, value)
+    setFormStates(
         produce((draft) => {
           let newDraft = draft;
           const finalIndex = last(path);
@@ -85,10 +106,10 @@ function useFormActions(onChange: Dispatch<SetStateAction<IFormItem[]>>) {
   };
 
   return {
-    onAddChildren,
-    onDeleteFormLine,
-    onAddSibling,
-    onStateChange
+    handleAddChildren,
+    handleDeleteItem,
+    handleAddSibling,
+    handleStateChange
   }
 }
 
