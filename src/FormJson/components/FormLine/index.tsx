@@ -37,7 +37,7 @@ function FormLine({
       key: 'addSibling',
       label: (
         <Typography.Paragraph
-          style={{ color: '#333', margin: '0 !important', cursor: 'pointer' }}
+          style={{ color: '#333', margin: 0, cursor: 'pointer' }}
           onClick={() => {
             handleAddSibling(path);
           }}
@@ -50,7 +50,7 @@ function FormLine({
       key: 'addChildren',
       label: (
         <Typography.Paragraph
-          style={{ color: '#333', margin: '0 !important', cursor: 'pointer' }}
+          style={{ color: '#333', margin: 0, cursor: 'pointer' }}
           onClick={() => {
             handleAddChildren(path);
           }}
@@ -60,8 +60,9 @@ function FormLine({
       ),
     },
   ];
+
   return (
-    <Row className={itemClassName} style={{margin: '0 !important', padding: '8px 0'}} align={'middle'} gutter={16}>
+    <Row className={itemClassName} style={{margin: 0, padding: '8px 0'}} align={'middle'} gutter={16}>
       <Col span={spans[0]} style={{ paddingLeft: (path.length - 1) * indent }}>
         <Input
           placeholder={shouldKeyDisabled ? '' : '请输入json的key'}
@@ -89,7 +90,6 @@ function FormLine({
         {isComplexType ? (
           <Dropdown menu={{ items }}>
             <Button
-
               shape={'circle'}
               type={'link'}
               size={'small'}
@@ -98,7 +98,6 @@ function FormLine({
           </Dropdown>
         ) : (
           <Button
-
             onClick={() => {
               handleAddSibling(path);
             }}

@@ -1,6 +1,6 @@
 {
   "name": "antd-form-json",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generate Json data with the controlled form",
   "main": "lib/index.es.js",
   "module": "lib/index.es.js",
