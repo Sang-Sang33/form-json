@@ -182,7 +182,7 @@ The CURD actions for the form which has already been add event to the form eleme
 
 ## Interface
 
-### IFormItem <a id="IFormItem"></a>
+### <a id="IFormItem">IFormItem</a>
 ```ts
 interface IFormItem {
   name: string;                     // The Json Key
@@ -226,12 +226,12 @@ interface ICallbacks {
 }
 ```
 
-### OnStateCurd <a id="OnStateCurd"></a>
+### <a id="OnStateCurd">OnStateCurd</a>
 ```ts
 type OnStateCurd = (path: number[]) => void;
 ```
 
-### OnStateChange <a id="OnStateChange"></a>
+### <a id="OnStateChange">OnStateChange</a>
 ```ts 
 type OnStateChange = (path: number[], field: TEditField, value: string | number | boolean) => void;
 ```
