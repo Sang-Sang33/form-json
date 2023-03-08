@@ -3,7 +3,7 @@ import RecursiveFormLine from './components/RecursiveFormLine';
 import { IFormItem } from './common/constants/type';
 import useFormActions from './common/hooks/useFormActions';
 
-interface IProps {
+export interface IProps {
   formStates: IFormItem[];
   setFormStates: Dispatch<SetStateAction<IFormItem[]>>;
   indent?: number;

@@ -1,10 +1,12 @@
 {
   "name": "json-form",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "lib/index.es.js",
   "module": "lib/index.es.js",
   "typings": "lib/es/type/index.d.ts",
   "type": "module",
+  "homepage": "https://sang-sang33.github.io/?path=/story/example-jsonform--normal",
+  "repository": "https://github.com/Sang-Sang33/Json-Form.git",
   "files": [
     "lib"
   ],
@@ -12,7 +14,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "lint": "eslint --fix --ext .ts --ext .tsx src/",
-    "lint:test": "eslint --fix --ext .ts --ext .tsx test/",
+    "lint:docs": "eslint --fix --ext .ts --ext .tsx docs/",
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",

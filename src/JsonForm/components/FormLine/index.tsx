@@ -1,7 +1,6 @@
 import { Input, Select, Typography, Dropdown, Row, Col, Button } from 'antd';
 import { TYPE_OPTIONS, ETypes, isComplexTypeFn } from '../../common/constants';
-//@ts-ignore
-import styles from './index.module.css';
+import './index.css';
 import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
 import { OnStateCurd, OnStateChange, IFormItem } from '../../common/constants/type';
 import React, { useMemo } from 'react';
@@ -28,7 +27,7 @@ function FormLine({ name, value, type, path, indent = 12, spans = [8, 5, 8, 3], 
       key: 'addSibling',
       label: (
           <Typography.Paragraph
-              className={styles.dropText}
+              className={"dropText"}
               onClick={() => {
                 onAddSibling(path);
               }}
@@ -41,7 +40,7 @@ function FormLine({ name, value, type, path, indent = 12, spans = [8, 5, 8, 3], 
       key: 'addChildren',
       label: (
           <Typography.Paragraph
-              className={styles.dropText}
+              className={"dropText"}
               onClick={() => {
                 onAddChildren(path);
               }}
@@ -52,7 +51,7 @@ function FormLine({ name, value, type, path, indent = 12, spans = [8, 5, 8, 3], 
     },
   ];
   return (
-      <Row className={styles.formLine} align={'middle'} gutter={16}>
+      <Row className={"formLine"} align={'middle'} gutter={16}>
         <Col span={spans[0]} style={{paddingLeft: (path.length - 1) * indent}}>
           <Input
               placeholder={shouldKeyDisabled ? '' : '请输入json的key'}
@@ -66,7 +65,7 @@ function FormLine({ name, value, type, path, indent = 12, spans = [8, 5, 8, 3], 
         <Col span={spans[1]}>
           <Select
               value={type}
-              className={styles.types}
+              className={"types"}
               options={TYPE_OPTIONS}
               onChange={(value) => {
                 onStateChange(path, 'type', value);
