@@ -1,4 +1,4 @@
-import { JsonForm, IJsonFormProps, useJsonStates } from '../../src/index';
+import { FormJson, IFormJsonProps, useJsonStates } from '../../src/index';
 import { useState } from 'react';
 import { ETypes, IFormItem } from '../../src';
 import React from 'react';
@@ -68,11 +68,11 @@ export function useFormStates() {
   };
 }
 
-export const JsonFormStory = (props: IJsonFormProps) => {
+export const FormJsonStory = (props: IFormJsonProps) => {
   const jsonStates = useJsonStates(props.formStates);
   return <div style={{display: 'flex'}}>
     <div style={{width: '70%'}}>
-      <JsonForm {...props} />
+      <FormJson {...props} />
     </div>
     <div style={{ display: 'flex', flexDirection: 'column', width: '30%', backgroundColor: '#f6f7f8', padding: 16 }}>
       <h3 style={{margin: 0, padding: 0}}>

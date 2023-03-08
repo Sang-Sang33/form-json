@@ -1,11 +1,11 @@
-import { JsonFormStory, useFormStates,  } from './JsonForm';
+import { FormJsonStory, useFormStates,  } from './FormJson';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { IJsonFormProps } from '../../src/index';
+import { IFormJsonProps } from '../../src/index';
 
 export default {
-  title: 'Example/JsonForm',
-  component: JsonFormStory,
+  title: 'Example/FormJson',
+  component: FormJsonStory,
   argTypes: {
     spans: {
       control: {
@@ -50,11 +50,11 @@ export default {
       description: "A callback function, can be executed when the input element's value has been changed."
     }
   }
-} as ComponentMeta<typeof JsonFormStory>;
+} as ComponentMeta<typeof FormJsonStory>;
 
-const Template: ComponentStory<typeof JsonFormStory> = (args: Omit<IJsonFormProps, 'setFormStates' | 'formStates'>) => {
+const Template: ComponentStory<typeof FormJsonStory> = (args: Omit<IFormJsonProps, 'setFormStates' | 'formStates'>) => {
   const stateProps = useFormStates();
-  return <JsonFormStory {...stateProps} {...args}  />
+  return <FormJsonStory {...stateProps} {...args}  />
 };
 
 const callbacksArgs = () => ({

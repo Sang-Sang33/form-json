@@ -12,7 +12,7 @@ export interface IProps extends ICallbacks {
   itemClassName?: string;
 }
 
-function JsonForm({ 
+function FormJson({ 
   formStates, 
   setFormStates, 
   indent = 16, 
@@ -45,4 +45,4 @@ function JsonForm({
   );
 }
 
-export default JsonForm;
+export default FormJson;

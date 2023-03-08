@@ -1,15 +1,15 @@
 {
-  "name": "json-form",
+  "name": "antd-form-json",
   "version": "0.0.1",
   "description": "Generate Json data with the controlled form",
   "main": "lib/index.es.js",
   "module": "lib/index.es.js",
   "typings": "lib/es/type/index.d.ts",
   "type": "module",
-  "homepage": "https://sang-sang33.github.io/?path=/story/example-jsonform--normal",
+  "homepage": "https://sang-sang33.github.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sang-Sang33/Json-Form.git"
+    "url": "https://github.com/Sang-Sang33/form-json.git"
   },
   "files": [
     "lib"
@@ -18,8 +18,8 @@
     "react",
     "antd",
     "immmer",
-    "json",
     "form",
+    "json",
     "controlled"
   ],
   "license": "MIT",

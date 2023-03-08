@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { IFormItem } from '../src/JsonForm/common/constants/type';
-import { ETypes } from '../src/JsonForm/common/constants';
+import { IFormItem } from '../src/FormJson/common/constants/type';
+import { ETypes } from '../src/FormJson/common/constants';
 import { uniqueId } from 'lodash-es';
 
 export function useFormStates() {

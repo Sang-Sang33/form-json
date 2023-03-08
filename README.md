@@ -1,25 +1,25 @@
-<h1 align="center">Json Form</h1>
+<h1 align="center">Antd Form Json</h1>
 
 <p align="center">Generate Json data with the controlled form based on "antd"、“lodash-es”、"immer"</p>
 
 ## Install
 
 ```bash
-npm install json-form
+npm install antd-form-json
 ```
 
 ```bash
-yarn add json-form
+yarn add antd-form-json
 ```
 
-### [**Json-Form-Storybook**](https://sang-sang33.github.io/?path=/story/example-jsonform--normal)
+### [**antd-form-json-Storybook**](https://sang-sang33.github.io/?path=/story/example-FormJson--normal)
 
 ## Usage
 
 ```tsx
 import { useState } from 'react';
-import { JsonForm } from 'json-form';
-import type { IFormItem, ETypes } from 'json-form';
+import { FormJson } from 'antd-form-json';
+import type { IFormItem, ETypes } from 'antd-form-json';
 
 const App = () => {
   const [formStates, setFormStates] = useState<IFormItem[]>([
@@ -70,7 +70,7 @@ const App = () => {
   ]);
   return (
     <div>
-      <JsonForm formStates={formStates} setFormStates={setFormStates} />
+      <FormJson formStates={formStates} setFormStates={setFormStates} />
     </div>
   )
 }
@@ -103,8 +103,8 @@ return the memorized json object from formStates.
 ### usage
 ```tsx
 import { useState } from 'react';
-import { JsonForm, useJsonStates } from 'json-form';
-import type { IFormItem, ETypes } from 'json-form';
+import { FormJson, useJsonStates } from 'antd-form-json';
+import type { IFormItem, ETypes } from 'antd-form-json';
 
 const App = () => {
   const [formStates, setFormStates] = useState<IFormItem[]>([
@@ -167,7 +167,7 @@ const App = () => {
    * */
   return (
     <div>
-      <JsonForm formStates={formStates} setFormStates={setFormStates} />
+      <FormJson formStates={formStates} setFormStates={setFormStates} />
     </div>
   )
 }

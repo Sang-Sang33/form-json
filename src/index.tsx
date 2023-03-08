@@ -1,6 +1,6 @@
-export { default as useJsonStates } from './JsonForm/common/hooks/useJsonStates';
-export { default as useFormActions } from './JsonForm/common/hooks/useFormActions';
-export { default as JsonForm } from './JsonForm';
-export type { IFormItem } from './JsonForm/common/constants/type';
-export type { IProps as IJsonFormProps } from './JsonForm/index';
-export { ETypes } from './JsonForm/common/constants/index';
+export { default as useJsonStates } from './FormJson/common/hooks/useJsonStates';
+export { default as useFormActions } from './FormJson/common/hooks/useFormActions';
+export { default as FormJson } from './FormJson/index';
+export type { IFormItem } from './FormJson/common/constants/type';
+export type { IProps as IFormJsonProps } from './FormJson/index';
+export { ETypes } from './FormJson/common/constants/index';
