@@ -1,6 +1,6 @@
 {
   "name": "antd-form-json",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generate Json data with the controlled form",
   "main": "lib/index.es.js",
   "module": "lib/index.es.js",
@@ -30,7 +30,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -91,7 +92,7 @@
     "vitest": "^0.29.2"
   },
   "peerDependencies": {
-    "antd": "^4.4.3",
+    "antd": ">=4",
     "react": ">=17.0.2",
     "react-dom": ">=17.0.2"
   },

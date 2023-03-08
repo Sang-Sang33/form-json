@@ -12,7 +12,7 @@ npm install antd-form-json
 yarn add antd-form-json
 ```
 
-### [**antd-form-json-Storybook**](https://sang-sang33.github.io/?path=/story/example-FormJson--normal)
+### [**antd-form-json-Storybook**](https://sang-sang33.github.io)
 
 ## Usage
 

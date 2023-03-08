@@ -23,14 +23,9 @@ export default [
     format: "iife",
     output: [
       {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true
-      },
-      {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
+        sourcemap: false,
       },
     ],
     plugins: [
@@ -48,7 +43,7 @@ export default [
       postcss({
         modules: true,
       }),
-      terser(),
+      // terser(),
     ],
     external: ["lodash-es", "immer", "antd", "@ant-design/icons"],
   },

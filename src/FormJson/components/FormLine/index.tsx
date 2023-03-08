@@ -5,7 +5,6 @@ import { PlusOutlined, CloseOutlined } from '@ant-design/icons';
 import { TYPE_OPTIONS, ETypes, isComplexTypeFn } from '../../common/constants';
 import { IFormItem, ReturnFormACtions } from '../../common/constants/type';
 import ValueInputByType from '../ValueInputByType';
-import './index.css';
 
 interface IProps extends IFormItem, ReturnFormACtions {
   path: number[];
@@ -38,7 +37,7 @@ function FormLine({
       key: 'addSibling',
       label: (
         <Typography.Paragraph
-          className={"dropText"}
+          style={{ color: '#333', margin: '0 !important', cursor: 'pointer' }}
           onClick={() => {
             handleAddSibling(path);
           }}
@@ -51,7 +50,7 @@ function FormLine({
       key: 'addChildren',
       label: (
         <Typography.Paragraph
-          className={"dropText"}
+          style={{ color: '#333', margin: '0 !important', cursor: 'pointer' }}
           onClick={() => {
             handleAddChildren(path);
           }}
@@ -62,7 +61,7 @@ function FormLine({
     },
   ];
   return (
-    <Row className={`formLine ${itemClassName}`} align={'middle'} gutter={16}>
+    <Row className={itemClassName} style={{margin: '0 !important', padding: '8px 0'}} align={'middle'} gutter={16}>
       <Col span={spans[0]} style={{ paddingLeft: (path.length - 1) * indent }}>
         <Input
           placeholder={shouldKeyDisabled ? '' : '请输入json的key'}
@@ -76,7 +75,7 @@ function FormLine({
       <Col span={spans[1]}>
         <Select
           value={type}
-          className={"types"}
+          style={{width: '100%'}}
           options={TYPE_OPTIONS}
           onChange={(value) => {
             handleStateChange(path, 'type', value);
