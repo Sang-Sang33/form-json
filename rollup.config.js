@@ -43,7 +43,7 @@ export default [
       postcss({
         modules: true,
       }),
-      // terser(),
+      terser(),
     ],
     external: ["lodash-es", "immer", "antd", "@ant-design/icons"],
   },
