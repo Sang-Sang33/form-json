@@ -1,4 +1,4 @@
-import { act, renderHook } from '@testing-library/react';
+import { renderHook } from '@testing-library/react';
 import useJsonState from './useJsonStates';
 import { uniqueId } from 'lodash-es';
 import { ETypes } from '../constants';

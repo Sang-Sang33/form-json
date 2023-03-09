@@ -1,11 +1,12 @@
-import { FormJsonStory, useFormStates,  } from './FormJson';
+import {  useFormStates } from './FormJson';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { IFormJsonProps } from '../../src/index';
+import { IFormJsonProps, FormJson, useJsonStates } from '../../src';
+import { Input } from 'antd';
 
 export default {
   title: 'Example/FormJson',
-  component: FormJsonStory,
+  component: FormJson,
   argTypes: {
     spans: {
       control: {
@@ -20,6 +21,18 @@ export default {
       },
       defaultValue: 16,
       description: "Indent size in pixels of tree data."
+    },
+    containerClassName: {
+      control: {
+        type: 'string',
+      },
+      description: "The container class."
+    },
+    itemClassName: {
+      control: {
+        type: 'string',
+      },
+      description: "The class for each line's container."
     },
     formStates: {
       control: false,
@@ -50,11 +63,27 @@ export default {
       description: "A callback function, can be executed when the input element's value has been changed."
     }
   }
-} as ComponentMeta<typeof FormJsonStory>;
+} as ComponentMeta<typeof FormJson>;
 
-const Template: ComponentStory<typeof FormJsonStory> = (args: Omit<IFormJsonProps, 'setFormStates' | 'formStates'>) => {
+const Template: ComponentStory<typeof FormJson> = (args: Omit<IFormJsonProps, 'setFormStates' | 'formStates'>) => {
   const stateProps = useFormStates();
-  return <FormJsonStory {...stateProps} {...args}  />
+  const jsonStates = useJsonStates(stateProps.formStates)
+  return <div style={{display: 'flex'}}>
+    <div style={{width: '70%'}}>
+      <FormJson {...stateProps} {...args} />
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', width: '30%', backgroundColor: '#f6f7f8', padding: 16 }}>
+      <h3 style={{margin: 0, padding: 0}}>
+        The Json Result by the hook of useJsonStates
+      </h3>
+      <Input.TextArea 
+        bordered={false} 
+        style={{flex: 1, color: 'rgba(0, 0, 0, 0.88)', fontWeight: 500, resize: 'none'}} 
+        value={JSON.stringify(jsonStates, null, 4)} 
+        disabled 
+      />
+    </div>
+  </div>
 };
 
 const callbacksArgs = () => ({

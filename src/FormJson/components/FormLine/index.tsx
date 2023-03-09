@@ -15,20 +15,21 @@ interface IProps extends IFormItem, ReturnFormACtions {
   itemClassName?: string;
 }
 
-function FormLine({ 
-  name, 
-  value, 
-  type, 
-  path, 
-  indent = 12, 
-  spans = [8, 5, 8, 3], 
-  parentType, 
-  isDeleteDisabled, 
+function FormLine({
+  name,
+  value,
+  id,
+  type,
+  path,
+  indent = 12,
+  spans = [8, 5, 8, 3],
+  parentType,
+  isDeleteDisabled,
   itemClassName = '',
-  handleAddSibling, 
-  handleAddChildren, 
-  handleDeleteItem, 
-  handleStateChange 
+  handleAddSibling,
+  handleAddChildren,
+  handleDeleteItem,
+  handleStateChange
 }: IProps) {
   const isComplexType = useMemo(() => isComplexTypeFn(type as ETypes), [type]);
   const shouldKeyDisabled = parentType === ETypes.Array;
@@ -65,6 +66,7 @@ function FormLine({
     <Row className={itemClassName} style={{margin: 0, padding: '8px 0'}} align={'middle'} gutter={16}>
       <Col span={spans[0]} style={{ paddingLeft: (path.length - 1) * indent }}>
         <Input
+          data-testid={`line-${id}-key`}
           placeholder={shouldKeyDisabled ? '' : '请输入json的key'}
           value={name}
           onChange={(e) => {
@@ -75,6 +77,7 @@ function FormLine({
       </Col>
       <Col span={spans[1]}>
         <Select
+          data-testid={`line-${id}-type`}
           value={type}
           style={{width: '100%'}}
           options={TYPE_OPTIONS}
@@ -84,16 +87,17 @@ function FormLine({
         />
       </Col>
       <Col span={spans[2]}>
-        <ValueInputByType value={value} type={type} path={path} handleStateChange={handleStateChange} />
+        <ValueInputByType value={value} type={type} path={path} id={id} handleStateChange={handleStateChange} />
       </Col>
       <Col span={spans[3]}>
         {isComplexType ? (
-          <Dropdown menu={{ items }}>
+          <Dropdown menu={{ items }} data-testid={`line-${id}-menu`}>
             <Button
               shape={'circle'}
               type={'link'}
               size={'small'}
               icon={<PlusOutlined />}
+              data-testid={`line-${id}-menu-children`}
             />
           </Dropdown>
         ) : (
@@ -105,12 +109,14 @@ function FormLine({
             type={'link'}
             size={'small'}
             icon={<PlusOutlined />}
+            data-testid={`line-${id}-add`}
           />
         )}
 
         <Button
           disabled={isDeleteDisabled}
           style={{ marginLeft: 8 }}
+          data-testid={`line-${id}-delete`}
           onClick={() => {
             if (isDeleteDisabled) return;
             handleDeleteItem(path);

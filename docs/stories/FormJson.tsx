@@ -1,8 +1,6 @@
-import { FormJson, IFormJsonProps, useJsonStates } from '../../src/index';
 import { useState } from 'react';
 import { ETypes, IFormItem } from '../../src';
-import React from 'react';
-import { Input } from 'antd';
+
 
 export function useFormStates() {
   const [formStates, setFormStates] = useState<IFormItem[]>([
@@ -68,19 +66,5 @@ export function useFormStates() {
   };
 }
 
-export const FormJsonStory = (props: IFormJsonProps) => {
-  const jsonStates = useJsonStates(props.formStates);
-  return <div style={{display: 'flex'}}>
-    <div style={{width: '70%'}}>
-      <FormJson {...props} />
-    </div>
-    <div style={{ display: 'flex', flexDirection: 'column', width: '30%', backgroundColor: '#f6f7f8', padding: 16 }}>
-      <h3 style={{margin: 0, padding: 0}}>
-        The Json Result by the hook of useJsonStates
-      </h3>
-      <Input.TextArea bordered={false} style={{flex: 1, color: 'rgba(0, 0, 0, 0.88)', fontWeight: 500, resize: 'none'}} value={JSON.stringify(jsonStates, null, 4)} disabled />
-    </div>
-  </div>
-}
 
 

@@ -12,14 +12,14 @@ npm install antd-form-json
 yarn add antd-form-json
 ```
 
-### [**antd-form-json-Storybook**](https://sang-sang33.github.io)
+### [**Preview Storybook**](https://sang-sang33.github.io)
 
 ## Usage
 
 ```tsx
 import { useState } from 'react';
-import { FormJson } from 'antd-form-json';
-import type { IFormItem, ETypes } from 'antd-form-json';
+import { FormJson, ETypes } from 'antd-form-json';
+import type { IFormItem } from 'antd-form-json';
 
 const App = () => {
   const [formStates, setFormStates] = useState<IFormItem[]>([

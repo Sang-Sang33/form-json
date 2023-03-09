@@ -92,4 +92,14 @@ describe('useFormActions', () => {
     expect(stateResult.current.formStates[1].value).toEqual("")
   })
 
+  it('when the type change to "boolean", the type fo value should be boolean', () => {
+    const { result: stateResult } = renderHook(() => useFormStates())
+    const { result: actionsResult } = renderHook(() => useFormActions({setFormStates: stateResult.current.setFormStates}))
+    act(() => {
+      actionsResult.current.handleStateChange([1], 'type', ETypes.Boolean)
+    })
+    expect(stateResult.current.formStates[1].type).toEqual(ETypes.Boolean)
+    expect(stateResult.current.formStates[1].value).toEqual(true)
+  })
+
 })

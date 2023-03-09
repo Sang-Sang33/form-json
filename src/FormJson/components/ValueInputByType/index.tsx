@@ -6,15 +6,17 @@ import React from 'react';
 
 interface IProps {
   value: string | boolean | number;
+  id: string;
   type: string;
   path: number[];
   handleStateChange: OnStateChange;
 }
 
-function ValueInputByType({ value, path, type, handleStateChange }: IProps) {
+function ValueInputByType({ value, path, type, id, handleStateChange }: IProps) {
   const VALUE_COMPONENTS = {
     [ETypes.Boolean]: (
         <Select
+            data-testid={`line-${id}-value`}
             value={value}
             style={{ width: '100%' }}
             options={BOOLEAN_OPTIONS}
@@ -26,6 +28,7 @@ function ValueInputByType({ value, path, type, handleStateChange }: IProps) {
     ),
     [ETypes.String]: (
         <Input
+            data-testid={`line-${id}-value`}
             value={value as string}
             placeholder={'请输入值'}
             onChange={(e) => {
@@ -35,6 +38,7 @@ function ValueInputByType({ value, path, type, handleStateChange }: IProps) {
     ),
     [ETypes.Number]: (
         <InputNumber
+            data-testid={`line-${id}-value`}
             value={value as number}
             style={{ width: '100%' }}
             controls={false}
@@ -49,7 +53,7 @@ function ValueInputByType({ value, path, type, handleStateChange }: IProps) {
     const component = VALUE_COMPONENTS[type as keyof typeof VALUE_COMPONENTS];
     return component;
   }
-  return <Input disabled />;
+  return <Input disabled data-testid={`line-${id}-value`} />;
 }
 
 export default ValueInputByType;
