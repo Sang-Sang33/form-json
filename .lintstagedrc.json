@@ -1,0 +1,4 @@
+{
+  "*.(tsx|ts)": ["yarn lint"],
+  "*": "yarn coverage"
+}

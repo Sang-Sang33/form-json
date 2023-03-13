@@ -2,7 +2,7 @@ import {
   IFormItem,
   OnStateChange,
   OnStateCurd,
-  ReturnFormACtions,
+  ReturnFormActions,
   ICallbacks,
 } from '../constants/type';
 import produce from 'immer';
@@ -30,7 +30,7 @@ function useFormActions({
   onAddSibling, 
   onDeleteItem, 
   onStateChange 
-}: IFormActions): ReturnFormACtions {
+}: IFormActions): ReturnFormActions {
 
   const handleAddSibling: OnStateCurd = (path) => {
     onAddSibling?.(path);

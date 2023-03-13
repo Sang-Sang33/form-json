@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import FormLine from '../FormLine';
-import { IFormItem, ReturnFormACtions } from '../../common/constants/type';
+import { IFormItem, ReturnFormActions } from '../../common/constants/type';
 import { ETypes, isComplexTypeFn } from '../../common/constants';
 
-interface IProps extends ReturnFormACtions {
+interface IProps extends ReturnFormActions {
   formState: IFormItem;
   path: number[];
   parentType: string;

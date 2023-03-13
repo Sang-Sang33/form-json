@@ -175,7 +175,7 @@ const App = () => {
 
 ### useFormActions
 ```ts
-type useFormActions = (props: IFormActions) => ReturnFormACtions
+type useFormActions = (props: IFormActions) => ReturnFormActions
 ```
 The CURD actions for the form which has already been binded to the form element event, maybe you could use it in other place.
 

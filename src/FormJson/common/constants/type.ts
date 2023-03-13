@@ -12,7 +12,7 @@ export type OnStateChange = (path: number[], field: TEditField, value: string | 
 
 export type OnStateCurd = (path: number[]) => void;
 
-export interface ReturnFormACtions {
+export interface ReturnFormActions {
   handleAddSibling: OnStateCurd;
   handleAddChildren: OnStateCurd;
   handleDeleteItem: OnStateCurd;

@@ -17,7 +17,7 @@ describe("Component FormJson", () => {
     // @ts-ignore
     const padding = lines[0].style.padding;
     const input = screen.getByTestId(`line-${stateResult.current.formStates[0].children[0].id}-key`)
-    // @ts-ignore
+    // @ts-ignore s
     const indent = input.parentNode.style.paddingLeft
     expect(container).toBeInTheDocument()
     expect(lines.length).toBe(4)
