@@ -8,10 +8,11 @@ import path from "path";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
 
-const packageJson = require("./package.json");
+const { module, typings } = require("./package.json");
+
 const babelOptions = {
   presets: ["@babel/preset-env"],
-  extensions: [".js", ".jsx", ".ts", ".tsx", ".scss"],
+  extensions: [".ts", ".tsx"],
   exclude: "**/node_modules/**",
 };
 
@@ -23,7 +24,7 @@ export default [
     format: "iife",
     output: [
       {
-        file: packageJson.module,
+        file: module,
         format: "esm",
         sourcemap: false,
       },
@@ -45,11 +46,11 @@ export default [
       }),
       terser(),
     ],
-    external: ["lodash-es", "immer", "antd", "@ant-design/icons"],
+    external: ["lodash-es", "immer", "antd", "@ant-design/icons"]
   },
   {
     input: entry,
-    output: [{ filename: "index.d.ts", dir: "lib/es/type", format: "esm" }],
+    output: [{ file: typings, format: "esm" }],
     plugins: [dts.default()],
   },
 ];
