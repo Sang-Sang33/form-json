@@ -14,8 +14,10 @@ describe("Component FormJson", () => {
     const { result: stateResult } = renderHook(() => useFormStates())
     const {container} = render(<FormJson {...stateResult.current} indent={18} />)
     const lines = container.querySelectorAll('.ant-row')
+    // @ts-ignore
     const padding = lines[0].style.padding;
     const input = screen.getByTestId(`line-${stateResult.current.formStates[0].children[0].id}-key`)
+    // @ts-ignore
     const indent = input.parentNode.style.paddingLeft
     expect(container).toBeInTheDocument()
     expect(lines.length).toBe(4)
@@ -30,7 +32,9 @@ describe("Component FormJson", () => {
     const deleteBtn = screen.getByTestId(`line-${stateResult.current.formStates[0].id}-delete`)
     const valueInput = screen.getByTestId(`line-${stateResult.current.formStates[0].id}-value`)
     expect(lines.length).toBe(4)
+    // @ts-ignore
     expect(deleteBtn.disabled).toBe(true)
+    // @ts-ignore
     expect(valueInput.disabled).toBe(true)
   })
 })

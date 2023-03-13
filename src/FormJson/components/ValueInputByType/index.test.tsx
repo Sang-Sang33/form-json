@@ -57,6 +57,7 @@ describe('Component ValueInputByType', () => {
     expect(ValueInput.container).toBeInTheDocument()
     expect(selectEle).toBeInTheDocument();
     expect(options.length).toBe(2);
+    // @ts-ignore
     expect(options[0].title!).toBe('true')
   })
 
@@ -100,6 +101,7 @@ describe('Component ValueInputByType', () => {
     />)
     const input = screen.getByTestId(`line-${props.id}-value`)
     expect(ValueInput.container).toBeInTheDocument()
+    // @ts-ignore
     expect(input.disabled).toBeTruthy();
   })
 })
